@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/btnRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp"
+    android:padding="@dimen/_5sdp"
+    android:gravity="center"
+    android:backgroundTint="@color/photo_picker_color_primary"
+    android:background="@drawable/btn_round"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_6sdp"
+        app:drawableTint="@color/white" />
+
+</LinearLayout>

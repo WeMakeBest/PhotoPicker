@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/imagebtn"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    app:cardBackgroundColor="@color/black"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/app_lykechat_logo"
+        android:layout_height="120dp" />
+
+    <View
+        android:id="@+id/viewTransGradient"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:visibility="gone"
+        android:background="@drawable/trans_to_black" />
+
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/_8sdp" />
+    
+    <ImageView
+        android:id="@+id/ivSelected"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/baseline_done_24"
+        android:padding="@dimen/_30sdp"
+        android:visibility="gone"
+        android:importantForAccessibility="no"
+        android:background="@color/black_translucent" />
+
+</com.google.android.material.card.MaterialCardView>

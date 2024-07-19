@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PhotoPicker</string>
+
+    <string name="select">Select</string>
+    <string name="camera_permission_is_not_granted_please_go_to_settings_and_allow_camera_permission_to_take_photos_or_record_videos">Camera permission is not granted, please go to settings and allow camera permission to take photos or record videos.</string>
+    <string name="allow_camera_permission_to_take_photos_or_record_videos">Allow camera permission to take photos or record videos.</string>
+    <string name="storage_permission_is_not_granted_please_go_to_settings_and_allow_storage_permission_to_select_images_and_videos">Storage permission is not granted, please go to settings and allow storage permission to select images and videos.</string>
+    <string name="allow_storage_permission_to_select_photos_and_videos">Allow storage permission to select photos and videos.</string>
+    <string name="continue_">Continue</string>
+    <string name="not_now">Not now</string>
+</resources>

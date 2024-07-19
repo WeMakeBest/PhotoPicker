@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PhotoPicker" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/photo_picker_color_primary</item>
+        <item name="colorPrimaryVariant">@color/photo_picker_color_primary</item>
+        <item name="colorOnPrimary">@color/photo_picker_color_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/photo_picker_color_primary</item>
+        <item name="colorSecondaryVariant">@color/photo_picker_color_primary</item>
+        <item name="colorOnSecondary">@color/photo_picker_color_primary</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+</resources>
