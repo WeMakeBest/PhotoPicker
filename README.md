@@ -86,6 +86,8 @@ btnLaunchPicker.setOnClickListener {
 }
 ```
 
+---
+
 **Customize:**
 --------
 
