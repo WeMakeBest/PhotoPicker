@@ -56,3 +56,16 @@ dependencies {
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.WeMakeBest"
+                artifactId = "PhotoPicker"
+                version = "1.1.1"
+            }
+        }
+    }
+}
