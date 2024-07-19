@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
-        android:src="@drawable/app_lykechat_logo"
         android:layout_height="120dp" />
 
     <View

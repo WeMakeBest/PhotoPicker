@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.scope.publishBuildArtifacts
-
 plugins {
     id("com.android.library")
     alias(libs.plugins.jetbrains.kotlin.android)

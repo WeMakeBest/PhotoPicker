@@ -82,7 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
         android:visibility="gone"
-        app:btnWidth="match_parent"
         app:btn_text="@string/select"/>
 
 </LinearLayout>
