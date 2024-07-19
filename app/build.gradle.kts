@@ -1,7 +1,13 @@
+import com.android.build.gradle.internal.scope.publishBuildArtifacts
+
 plugins {
     id("com.android.library")
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
+
+group = "com.softsun.photopicker"
+version = "1.0"
 
 android {
     namespace = "com.softsun.photopicker"
