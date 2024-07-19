@@ -64,7 +64,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.WeMakeBest"
                 artifactId = "PhotoPicker"
-                version = "1.1.1"
+                version = "1.1.2"
             }
         }
     }
