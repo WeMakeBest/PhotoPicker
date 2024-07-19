@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:supportsRtl="true"
-        android:theme="@style/Theme.PhotoPicker">
+        android:supportsRtl="true">
 
         <activity android:name=".activities.PhotoPicker"
             android:exported="false" />
