@@ -8,5 +8,6 @@ buildscript {
 
 plugins {
     id("com.android.library") version "8.4.2" apply false
+    id("com.android.application") version "8.4.2" apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
 }

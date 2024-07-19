@@ -74,6 +74,7 @@
         android:id="@+id/progressBar"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="0dp"
+        android:indeterminateTint="@color/photo_picker_color_primary"
         android:layout_weight="100"/>
 
     <com.softsun.photopicker.views.CustomButton

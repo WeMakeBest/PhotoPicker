@@ -9,10 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_translucent">#50000000</color>
 
-
-<!--    Override these colors to change theme of photo picker-->
-
-<!--    <color name="photo_picker_color_primary_light">#F4BDFD</color>-->
-<!--    <color name="photo_picker_color_primary">#9C27B0</color>-->
-<!--    <color name="photo_picker_color_primary_dark">#641971</color>-->
+    <color name="photo_picker_color_primary_light">#C6F3DC</color>
+    <color name="photo_picker_color_primary">#40bf80</color>
+    <color name="photo_picker_color_primary_dark">#2F8C5E</color>
 </resources>

@@ -1,20 +1,21 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
 
+group = "com.softsun.photopicker"
+version = "1.0"
+
 android {
-    namespace = "com.softsun.photopickersample"
+    namespace = "com.softsun.photopicker"
     compileSdk = 34
 
     defaultConfig {
-        applicationId ="com.softsun.photopickersample"
-        minSdk = 23
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,22 +34,19 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
-//noinspection UseTomlInstead
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    //photo picker lib
-    implementation(project(":photopicker"))
 
     //
     implementation("com.intuit.sdp:sdp-android:1.1.1")
@@ -56,4 +54,17 @@ dependencies {
 
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.WeMakeBest"
+                artifactId = "PhotoPicker"
+                version = "1.1.2"
+            }
+        }
+    }
 }

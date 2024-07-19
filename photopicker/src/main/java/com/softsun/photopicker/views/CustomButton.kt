@@ -50,16 +50,6 @@ class CustomButton(context: Context, attributes: AttributeSet) : LinearLayout(co
         typedArray.recycle()
     }
 
-    fun setBtnWidth(btnWidth : Int) {
-        btnRoot.layoutParams.width = btnWidth
-    }
-
-    fun setBtnHeight(btnHeight : Int) {
-        if (btnHeight != -3) {
-            btnRoot.layoutParams.height = btnHeight
-        }
-    }
-
     fun setTextSizeCustom(textSize : Float) {
         if (textSize != -1F) {
             textView.textSize = textSize

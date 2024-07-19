@@ -16,7 +16,7 @@ import com.softsun.photopicker.R
 import com.softsun.photopicker.activities.PhotoPicker
 import com.softsun.photopicker.databinding.RowSmallCameraCardBinding
 import com.softsun.photopicker.databinding.RowSmallVideoCardBinding
-import com.softsun.photopicker.models.MediaItem
+import com.softsun.photopicker.models.MediaItemModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,14 +25,14 @@ import kotlinx.coroutines.withContext
 class ImagesListAdapter(private val context: Context, private val layoutResId: Int) :
     RecyclerView.Adapter<ViewHolder>() {
 
-    private val dataList: ArrayList<MediaItem> = ArrayList()
+    private val dataList: ArrayList<MediaItemModel> = ArrayList()
     val isSelectedList = ArrayList<Boolean>()
 
     private var isInActionMode = false
     var showCameraButton = false
     var showVideoButton = false
 
-    val selectedFilesList = ArrayList<MediaItem>()
+    val selectedFilesList = ArrayList<MediaItemModel>()
 
     fun clearSelections() {
         for (i in isSelectedList.indices) {
@@ -49,7 +49,7 @@ class ImagesListAdapter(private val context: Context, private val layoutResId: I
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(dataList: List<MediaItem>, handler: () -> Unit) {
+    fun setData(dataList: List<MediaItemModel>, handler: () -> Unit) {
         this.dataList.clear()
         this.dataList.addAll(dataList)
 

@@ -24,12 +24,12 @@ import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.softsun.photopicker.adapters.AlbumListAdapter
-import com.softsun.photopicker.adapters.ImagesListAdapter
 import com.softsun.photopicker.R
 import com.softsun.photopicker.databinding.ActivityPhotoPickerBinding
+import com.softsun.photopicker.adapters.AlbumListAdapter
+import com.softsun.photopicker.adapters.ImagesListAdapter
 import com.softsun.photopicker.models.Album
-import com.softsun.photopicker.models.MediaItem
+import com.softsun.photopicker.models.MediaItemModel
 import com.softsun.photopicker.recyclerview.AdaptiveSpacingItemDecoration
 import com.softsun.photopicker.recyclerview.RecyclerViewPauseImageLoadOnScrollListener
 import kotlinx.coroutines.CoroutineScope
@@ -247,10 +247,10 @@ class PhotoPicker : AppCompatActivity() {
                 val albumList = ArrayList<Album>()
 
                 for (item in albums) {
-                    val mediaItemsList = ArrayList<MediaItem>()
+                    val mediaItemsList = ArrayList<MediaItemModel>()
 
                     for (new in item.value) {
-                        mediaItemsList.add(MediaItem(new, FileType.IMAGE, null))
+                        mediaItemsList.add(MediaItemModel(new, FileType.IMAGE, null))
                     }
 
                     albumList.add(
@@ -292,7 +292,7 @@ class PhotoPicker : AppCompatActivity() {
                 contentResolver.query(videos, projection, selection, selectionArgs, orderBy)
 
             if (cursor != null) {
-                val videoAlbums: MutableMap<String, ArrayList<MediaItem>> = HashMap()
+                val videoAlbums: MutableMap<String, ArrayList<MediaItemModel>> = HashMap()
 
                 val bucketNameColumn =
                     cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME)
@@ -316,7 +316,7 @@ class PhotoPicker : AppCompatActivity() {
 
                         val duration = formatDuration(cursor.getLong(durationColumn))
                         videoAlbums[bucketName]!!.add(
-                            MediaItem(
+                            MediaItemModel(
                                 videoUri,
                                 FileType.VIDEO,
                                 duration
@@ -363,7 +363,7 @@ class PhotoPicker : AppCompatActivity() {
             val cursor = contentResolver.query(images, projection, null, null, orderBy)
 
             if (cursor != null) {
-                val imageUris: ArrayList<MediaItem> = ArrayList()
+                val imageUris: ArrayList<MediaItemModel> = ArrayList()
 
                 val imageIdColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
 
@@ -373,7 +373,7 @@ class PhotoPicker : AppCompatActivity() {
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                         imageId
                     )
-                    imageUris.add(MediaItem(imageUri, FileType.IMAGE, null))
+                    imageUris.add(MediaItemModel(imageUri, FileType.IMAGE, null))
                 }
                 cursor.close()
 
@@ -406,7 +406,7 @@ class PhotoPicker : AppCompatActivity() {
             val cursor = contentResolver.query(images, projection, null, null, orderBy)
 
             if (cursor != null) {
-                val imageUris: ArrayList<MediaItem> = ArrayList()
+                val imageUris: ArrayList<MediaItemModel> = ArrayList()
 
                 val imageIdColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
                 val durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION)
@@ -420,7 +420,7 @@ class PhotoPicker : AppCompatActivity() {
                     )
 
                     val duration = formatDuration(cursor.getLong(durationColumn))
-                    imageUris.add(MediaItem(imageUri, FileType.VIDEO, duration))
+                    imageUris.add(MediaItemModel(imageUri, FileType.VIDEO, duration))
                 }
                 cursor.close()
 
@@ -462,7 +462,7 @@ class PhotoPicker : AppCompatActivity() {
 
             val cursor = contentResolver.query(queryUri, projection, selection, null, sortOrder)
 
-            val mediaItems = ArrayList<MediaItem>()
+            val mediaItems = ArrayList<MediaItemModel>()
 
             cursor?.use {
                 val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID)
@@ -479,9 +479,9 @@ class PhotoPicker : AppCompatActivity() {
                     val mediaItem =
                         if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
                             val duration = formatDuration(cursor.getLong(durationColumn))
-                            MediaItem(uri, FileType.VIDEO, duration)
+                            MediaItemModel(uri, FileType.VIDEO, duration)
                         } else {
-                            MediaItem(uri, FileType.IMAGE, null)
+                            MediaItemModel(uri, FileType.IMAGE, null)
                         }
 
                     mediaItems.add(mediaItem)
@@ -527,7 +527,7 @@ class PhotoPicker : AppCompatActivity() {
             val cursor = contentResolver.query(uri, projection, selection, null, sortOrder)
 
             if (cursor != null) {
-                val albums: MutableMap<String, ArrayList<MediaItem>> = HashMap()
+                val albums: MutableMap<String, ArrayList<MediaItemModel>> = HashMap()
 
                 val bucketNameColumn =
                     cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.BUCKET_DISPLAY_NAME)
@@ -562,7 +562,7 @@ class PhotoPicker : AppCompatActivity() {
                         if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
                             val duration = formatDuration(cursor.getLong(durationColumn))
                             albums[bucketName]!!.add(
-                                MediaItem(
+                                MediaItemModel(
                                     contentUri,
                                     FileType.VIDEO,
                                     duration
@@ -570,7 +570,7 @@ class PhotoPicker : AppCompatActivity() {
                             )
                         } else {
                             albums[bucketName]!!.add(
-                                MediaItem(
+                                MediaItemModel(
                                     contentUri,
                                     FileType.IMAGE,
                                     null
@@ -713,8 +713,8 @@ class PhotoPicker : AppCompatActivity() {
         ) { isSuccess ->
             if (isSuccess) {
                 cameraImageUri?.let {
-                    val list = ArrayList<MediaItem>()
-                    list.add(MediaItem(it, FileType.IMAGE, null))
+                    val list = ArrayList<MediaItemModel>()
+                    list.add(MediaItemModel(it, FileType.IMAGE, null))
                     giveResult(list)
                 }
             }
@@ -725,9 +725,9 @@ class PhotoPicker : AppCompatActivity() {
         ) { isSuccess ->
             if (isSuccess) {
                 recordVideoUri?.let {
-                    val list = ArrayList<MediaItem>()
+                    val list = ArrayList<MediaItemModel>()
 
-                    list.add(MediaItem(it, FileType.VIDEO, null))
+                    list.add(MediaItemModel(it, FileType.VIDEO, null))
                     giveResult(list)
                 }
             }
@@ -752,11 +752,11 @@ class PhotoPicker : AppCompatActivity() {
         binding.rvImages.visibility = View.VISIBLE
     }
 
-    fun giveResult(data: ArrayList<MediaItem>) {
+    fun giveResult(data: ArrayList<MediaItemModel>) {
         giveResultInner(data)
     }
 
-    private fun giveResultInner(data: ArrayList<MediaItem>) {
+    private fun giveResultInner(data: ArrayList<MediaItemModel>) {
 //        for (item in data) {
 //            if (item.type == FileType.IMAGE) {
 //                println(File(item.uri.path).absolutePath)

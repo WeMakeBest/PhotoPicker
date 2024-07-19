@@ -5,7 +5,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.softsun.photopicker.activities.PhotoPicker
 
-data class MediaItem(
+data class MediaItemModel(
     var uri: Uri,
     val type: PhotoPicker.FileType,
     val duration: String?
@@ -26,12 +26,12 @@ data class MediaItem(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<MediaItem> {
-        override fun createFromParcel(parcel: Parcel): MediaItem {
-            return MediaItem(parcel)
+    companion object CREATOR : Parcelable.Creator<MediaItemModel> {
+        override fun createFromParcel(parcel: Parcel): MediaItemModel {
+            return MediaItemModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<MediaItem?> {
+        override fun newArray(size: Int): Array<MediaItemModel?> {
             return arrayOfNulls(size)
         }
     }
